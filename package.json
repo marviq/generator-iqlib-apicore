@@ -1,10 +1,9 @@
 {
   "name": "generator-madlib-apicore",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Yeoman based generator for a madlib based API client library",
   "license": "MIT",
   "main": "app/index.js",
-
   "homepage": "https://github.com/Qwerios/generator-madlib-apicore",
   "bugs": "https://github.com/Qwerios/generator-madlib-apicore/issues",
   "author": {
