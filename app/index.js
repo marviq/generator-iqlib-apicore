@@ -1,14 +1,15 @@
 ( function()
 {
     'use strict';
+    var path    = require( 'path' );
     var util    = require( 'util' );
     var path    = require( 'path' );
     var yeoman  = require( 'yeoman-generator' );
 
-    // Get the current running directory name
+    // Determine packageName based on current folder name
     //
-    var fullPath   = process.cwd();
-    var folderName = fullPath.split( '/' ).pop();
+    var fullPath    = process.cwd();
+    var packageName = fullPath.split( path.sep ).pop()
 
     var MadlibApicoreGenerator = module.exports = function MadlibApicoreGenerator( args, options, config )
     {
@@ -22,7 +23,8 @@
             } );
         } );
 
-        this.pkg = JSON.parse( this.readFileAsString( path.join( __dirname, '../package.json' ) ) );
+        this.pkg         = JSON.parse( this.readFileAsString( path.join( __dirname, '../package.json' ) ) );
+        this.currentYear = new Date().getFullYear()
     };
 
     util.inherits( MadlibApicoreGenerator, yeoman.generators.Base );
@@ -41,7 +43,7 @@
             {
                 name:       'packageName'
             ,   message:    'What is the name of this API core?'
-            ,   default:    folderName
+            ,   default:    packageName
             }
         ,   {
                 name:       'packageDescription'
@@ -86,9 +88,9 @@
 
         this.template( '_package.json',         'package.json'            );
         this.template( 'README.md',             'README.md'               );
+        this.template( 'LICENSE',               'LICENSE'                 );
 
         this.copy( 'GruntFile.coffee',          'GruntFile.coffee'        );
-        this.copy( 'LICENSE',                   'LICENSE'                 );
         this.copy( 'src/index.coffee',          'src/' + this._.slugify( this.mainName ) + '.coffee' );
         this.copy( 'src/api-settings.coffee',   'src/api-settings.coffee' );
         this.copy( 'src/api/base.coffee',       'src/api/base.coffee'     );
