@@ -1,7 +1,7 @@
-# generator-madlib-apicore
-[![Build Status](https://travis-ci.org/Qwerios/generator-madlib-apicore.svg?branch=master)](https://travis-ci.org/Qwerios/generator-madlib-apicore)  [![NPM version](https://badge.fury.io/js/generator-madlib-apicore.png)](http://badge.fury.io/js/generator-madlib-apicore)
+# generator-iqlib-apicore
+[![NPM version](https://badge.fury.io/js/generator-iqlib-apicore.png)](http://badge.fury.io/js/generator-madlib-apicore)
 
-[![Npm Downloads](https://nodei.co/npm/generator-madlib-apicore.png?downloads=true&stars=true)](https://nodei.co/npm/generator-madlib-apicore.png?downloads=true&stars=true)
+[![Npm Downloads](https://nodei.co/npm/generator-iqlib-apicore.png?downloads=true&stars=true)](https://nodei.co/npm/generator-iqlib-apicore.png?downloads=true&stars=true)
 
 A [Yeoman](http://yeoman.io) based generator for madlib based webapps.
 
@@ -9,15 +9,13 @@ A [Yeoman](http://yeoman.io) based generator for madlib based webapps.
 ## Getting Started
 First make sure yo and and the generator are installed:
 ```bash
-$ npm install -g yo generator-madlib-apicore
+$ npm install -g yo generator-iqlib-apicore
 ```
 
 You may need to have sudo permissions to install globally.
 After that you can create a new madlib module by creating a folder and then using the following command:
 ```bash
-$ mkdir madlib-my-webapp
-$ cd madlib-my-webapp
-$ yo madlib-apicore
+$ yo iqlib-apicore
 ```
 
 Yeoman will appear and ask you a few questions. Once they have been answered he will generate the required files to get started.
@@ -41,16 +39,16 @@ $ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install generator-madlib-apicore from npm, run:
+To install generator-iqlib-apicore from npm, run:
 
 ```
-$ npm install -g generator-madlib-apicore
+$ npm install -g generator-iqlib-apicore
 ```
 
 Finally, initiate the generator:
 
 ```
-$ yo madlib-apicore
+$ yo iqlib-apicore
 ```
 
 ### Getting To Know Yeoman
