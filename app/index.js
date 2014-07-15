@@ -11,7 +11,7 @@
     var fullPath    = process.cwd();
     var packageName = fullPath.split( path.sep ).pop()
 
-    var MadlibApicoreGenerator = module.exports = function MadlibApicoreGenerator( args, options, config )
+    var IqLibApicoreGenerator = module.exports = function IqLibApicoreGenerator( args, options, config )
     {
         yeoman.generators.Base.apply( this, arguments );
 
@@ -27,9 +27,9 @@
         this.currentYear = new Date().getFullYear()
     };
 
-    util.inherits( MadlibApicoreGenerator, yeoman.generators.Base );
+    util.inherits( IqLibApicoreGenerator, yeoman.generators.Base );
 
-    MadlibApicoreGenerator.prototype.askFor = function askFor( )
+    IqLibApicoreGenerator.prototype.askFor = function askFor( )
     {
         var callback = this.async();
 
@@ -78,7 +78,7 @@
         }.bind( this ) );
     };
 
-    MadlibApicoreGenerator.prototype.app = function app( )
+    IqLibApicoreGenerator.prototype.app = function app( )
     {
         // Create base folders
         //
@@ -96,7 +96,7 @@
         this.copy( 'src/api/base.coffee',       'src/api/base.coffee'     );
     };
 
-    MadlibApicoreGenerator.prototype.projectfiles = function projectfiles( )
+    IqLibApicoreGenerator.prototype.projectfiles = function projectfiles( )
     {
         this.copy( 'editorconfig',  '.editorconfig' );
         this.copy( 'jshintrc',      '.jshintrc'     );
