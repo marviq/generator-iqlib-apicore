@@ -33,6 +33,13 @@
     class BaseService
 
         ###*
+        #   Identifies the service to the api
+        #
+        #   @property baseService
+        ###
+        name: "baseService"
+
+        ###*
         #   The constructor is used to setup the type of service call.
         #   It specifies XmlHttpRequest parameters and response handling
         #

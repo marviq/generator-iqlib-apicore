@@ -5,7 +5,9 @@
             require "madlib-settings"
             require "madlib-hostmapping"
             require "q"
-            require "./api-settings"
+            require "./api/login"
+            require "./api/addCompany"
+            require "./api/addAdminEmployee"
         )
     else if typeof define is "function" and define.amd
         define( [
@@ -13,19 +15,16 @@
             "madlib-settings"
             "madlib-hostmapping"
             "q"
-            "./api-settings"
+            "./api/login"
+            "./api/addCompany"
+            "./api/addAdminEmployee"
         ], factory )
-)( (\
-    console
-,   settings
-,   HostMapping
-,   Q
-,   defaultSettings
-) ->
+)( ( console, settings, HostMapping, Q, services... ) ->
 
     api =
         initialised:    false
         settings:       null
+        serviceMapping: {}
 
     api.init = ( userSettings ) ->
 
@@ -36,16 +35,19 @@
             console.log( "[API] Using provided settings" )
             api.settings = userSettings
         else
-            console.log( "[API] Using own settings" )
-            api.settings = settings
-
-        # Initialise the settings for the API
-        #
-        defaultSettings.applyTo( api.settings )
+            throw new Error( "[API] No settings provided...." )
 
         # Create our hostMapping instance
         #
         api.hostMapping = new HostMapping( api.settings )
+
+        # Create the service mapping
+        #
+        for service in services 
+            if service.name 
+                api.serviceMapping[ service.prototype.name ] = service
+            else 
+                console.warn( "[API] Service supplied without an name" )
 
         # Mark the API as initialised
         #
@@ -55,37 +57,33 @@
         # First check if the API has been properly initialised
         #
         if not api.initialised
-            console.log( "[API] Auto-initialising due to service call: #{serviceName}" )
-            api.init()
+            throw new Error( "[API] Not initialized yet, tried to call service: #{serviceName}" )
 
         # Find the correct service to call
         #
-        service
-        switch serviceName
+        Service = api.serviceMapping[ serviceName ]
 
-            when "MyService"
-                service = new MyService()
-
-
-            # Unknown service call
-            #
-            else
-                console.log( "[API] Unknown service called: #{serviceName}" )
-                deferred = Q.defer()
-                deferred.reject(
-                    status:     404
-                    statusText: "unknown service #{serviceName}"
-                    request:    serviceName
-                    response:   null
-                )
-
-                # Abort due to error
-                #
-                return deferred.promise
-
-        # Call the service using current settings
+        # If the service was found call it
         #
-        return service.call( api.settings, params )
+        if Service 
+            console.log( "[API] Calling #{serviceName}" )
+            return new Service( api.settings ).call( api.settings, params )
+
+        # Unknown service call
+        #
+        else
+            console.log( "[API] Unknown service called: #{serviceName}" )
+            deferred = Q.defer()
+            deferred.reject(
+                status:     404
+                statusText: "unknown service #{serviceName}"
+                request:    serviceName
+                response:   null
+            )
+
+            # Abort due to error
+            #
+            return deferred.promise
 
     return api
 )

@@ -1,19 +1,26 @@
 {
-  "name": "generator-madlib-apicore",
-  "version": "0.1.2",
-  "description": "Yeoman based generator for a madlib based API client library",
+  "name": "generator-iqlib-apicore",
+  "version": "0.1.0",
+  "description": "Yeoman based generator for a iqlib based API client library",
   "license": "MIT",
   "main": "app/index.js",
   "homepage": "https://github.com/Qwerios/generator-madlib-apicore",
   "bugs": "https://github.com/Qwerios/generator-madlib-apicore/issues",
   "author": {
-    "name": "Mark Doeswijk",
-    "email": "mdoeswijk@gmail.com",
-    "url": "https://github.com/Qwerios"
+    "name": "Raymond de Wit",
+    "email": "raymond@thewhite.nl",
+    "url":  "https://github.com/iraytje"
   },
+  "contributors":[
+    {
+      "name": "Mark Doeswijk",
+      "email": "mdoeswijk@gmail.com",
+      "url": "https://github.com/Qwerios"
+    }
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Qwerios/generator-madlib-apicore"
+    "url": "https://github.com/marviq/generator-iqlib-apicore"
   },
   "engines": {
     "node": ">=0.10.0"
