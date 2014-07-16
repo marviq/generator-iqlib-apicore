@@ -1,5 +1,5 @@
 # generator-iqlib-apicore
-[![NPM version](https://badge.fury.io/js/generator-iqlib-apicore.png)](http://badge.fury.io/js/generator-madlib-apicore)
+[![NPM version](https://badge.fury.io/js/generator-iqlib-apicore.png)](http://badge.fury.io/js/generator-iqlib-apicore)
 
 [![Npm Downloads](https://nodei.co/npm/generator-iqlib-apicore.png?downloads=true&stars=true)](https://nodei.co/npm/generator-iqlib-apicore.png?downloads=true&stars=true)
 
@@ -19,6 +19,54 @@ $ yo iqlib-apicore
 ```
 
 Yeoman will appear and ask you a few questions. Once they have been answered he will generate the required files to get started.
+
+## Using the api
+When you want to use the api you need to supply it with a madlib-settings which contains the following settings:
+
+* You can leave out the hostMapping if you want, then you will need to supply the setting:
+
+overrideMapping: "environment"   ( hostConfig option, for example testing )
+
+```bash
+settings.init( "hostMapping",
+    "www.myhost.nl":                "production"
+
+    # Testing
+    #
+    "test.myhost.nl":               "testing"
+
+    # Development
+    #
+    "localhost":                    "testing"
+
+    # For local development purposes
+    # Set this up in your /etc/hosts or equivalent to point to localhost
+    #
+    "localhost.myhost.nl":          "production"
+)
+
+settings.init( "hostConfig",
+    "production":
+        "api":              "https://api.myhost.nl"
+
+    "testing":
+        "api":              "http://test-api.myhost.nl:8080"
+)
+
+# Setup XHR host settings
+#
+settings.init( "xdmConfig",
+    "api.myhost.nl":
+        cors:               false
+        xdmVersion:         3
+        xdmProvider:        "https://api.myhost.nl/xdm/v3/index.html"
+
+    "test-api.myhost.nl":
+        cors:               false
+        xdmVersion:         3
+        xdmProvider:        "https://test-api.myhost.nl/xdm/v3/index.html"
+)
+```
 
 
 ### What is Yeoman?
