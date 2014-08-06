@@ -3,14 +3,14 @@
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 
-describe('madlib-apicore generator', function () {
+describe('iqlib-apicore generator', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         return done(err);
       }
 
-      this.app = helpers.createGenerator('madlib-apicore:app', [
+      this.app = helpers.createGenerator('iqlib-apicore:app', [
         '../../app'
       ]);
       done();
