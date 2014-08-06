@@ -92,7 +92,6 @@
 
         this.copy( 'GruntFile.coffee',          'GruntFile.coffee'        );
         this.copy( 'src/index.coffee',          'src/' + this._.slugify( this.mainName ) + '.coffee' );
-        this.copy( 'src/api-settings.coffee',   'src/api-settings.coffee' );
         this.copy( 'src/api/base.coffee',       'src/api/base.coffee'     );
     };
 
