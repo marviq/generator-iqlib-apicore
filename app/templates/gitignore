@@ -1,3 +1,14 @@
+*~
+*.log
+.*.swp
+._*
+
+.DS_Store
+.sass-cache
+.svn
 node_modules
-dist
-npm-debug.log
+bower_components
+
+/build
+/dist
+/lib
