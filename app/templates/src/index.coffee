@@ -1,13 +1,13 @@
 ( ( factory ) ->
     if typeof exports is "object"
         module.exports = factory(
-            require "madlib-console"
-            require "madlib-settings"
-            require "madlib-hostmapping"
-            require "q"
-            require "./api/login"
-            require "./api/addCompany"
-            require "./api/addAdminEmployee"
+            require( "madlib-console" )
+            require( "madlib-settings" )
+            require( "madlib-hostmapping" )
+            require( "q" )
+            require( "./api/login" )
+            require( "./api/addCompany" )
+            require( "./api/addAdminEmployee" )
         )
     else if typeof define is "function" and define.amd
         define( [
@@ -43,10 +43,10 @@
 
         # Create the service mapping
         #
-        for service in services 
-            if service.name 
+        for service in services
+            if service.name
                 api.serviceMapping[ service.prototype.name ] = service
-            else 
+            else
                 console.warn( "[API] Service supplied without an name" )
 
         # Mark the API as initialised
@@ -65,7 +65,7 @@
 
         # If the service was found call it
         #
-        if Service 
+        if Service
             console.log( "[API] Calling #{serviceName}" )
             return new Service( api.settings ).call( api.settings, params )
 
