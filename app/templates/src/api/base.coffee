@@ -98,8 +98,8 @@
 
             # Replace any URL fragments we might have
             #
-            for urlFragment, urlValue of urlFragments
-                url = url.replace( ":#{urlFragment}", urlValue )
+            for fragmentKey, fragmentValue of urlFragments
+                url = url.replace( ":#{fragmentKey}", encodeURIComponent( fragmentValue ))
 
             # Add user token if set
             #
