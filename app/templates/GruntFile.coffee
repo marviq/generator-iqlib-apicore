@@ -24,6 +24,14 @@ module.exports = (grunt) ->
             files: [ "src/**/*.coffee" ]
             tasks: [ "coffee" ]
 
+    coffeelint:
+        options:
+            configFile: 'coffeelint.json'
+
+        default:
+            files:
+                src:    [ "src/**/*.coffee" ]
+
     mochaTest:
         test:
             options:
@@ -34,13 +42,14 @@ module.exports = (grunt) ->
 
     # These plugins provide the necessary tasks
     #
+    grunt.loadNpmTasks "grunt-coffeelint"
+    grunt.loadNpmTasks "grunt-contrib-clean"
     grunt.loadNpmTasks "grunt-contrib-coffee"
+    grunt.loadNpmTasks "grunt-contrib-compress"
     grunt.loadNpmTasks "grunt-contrib-watch"
     grunt.loadNpmTasks "grunt-mocha-test"
-    grunt.loadNpmTasks "grunt-contrib-compress"
-    grunt.loadNpmTasks "grunt-contrib-clean"
 
     # Default tasks
     #
-    grunt.registerTask "default", [ "clean", "coffee" ]
-    grunt.registerTask "test",    [ "clean", "coffee", "mochaTest" ]
+    grunt.registerTask "default", [ "clean", "coffeelint", "coffee" ]
+    grunt.registerTask "test",    [ "clean", "coffeelint", "coffee", "mochaTest" ]

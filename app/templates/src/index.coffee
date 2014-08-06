@@ -1,13 +1,13 @@
 ( ( factory ) ->
     if typeof exports is "object"
         module.exports = factory(
-            require "madlib-console"
-            require "madlib-settings"
-            require "madlib-hostmapping"
-            require "q"
-            require "./api/login"
-            require "./api/addCompany"
-            require "./api/addAdminEmployee"
+            require( "madlib-console" )
+            require( "madlib-settings" )
+            require( "madlib-hostmapping" )
+            require( "q" )
+            require( "./api/login" )
+            require( "./api/addCompany" )
+            require( "./api/addAdminEmployee" )
         )
     else if typeof define is "function" and define.amd
         define( [
