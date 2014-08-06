@@ -2,7 +2,6 @@
     "author": {
         "email": "<%= authorEmail %>",
         "name": "<%= authorName %>",
-        "url": "https://github.com/Qwerios"
     },
     "contributors": [],
     "browser": {
