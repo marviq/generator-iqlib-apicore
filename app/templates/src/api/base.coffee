@@ -76,19 +76,21 @@
         #
         #   @function   call
         #   @params     {Object}    settings    Madlib settings instance. Used for XHR, hostMapping and cross-domain resolving.
-        #   @params     {String}    requestBody The request content
+        #   @params     {String}    data        Request data, feeds either into url query parameters (GET) or body content (POST, PUT)
         #   @return     {Promise}
         ###
-        call: ( settings, requestBody, urlFragments = {} ) ->
+        call: ( settings, data, urlFragments = {} ) ->
             deferred = Q.defer()
 
             hostMapping = new HostMapping( settings )
             apiHost     = hostMapping.getHostName( @hostType )
             headers     = {}
-            contentType
+            contentType = false # false implies omission of a contentType header.
 
-            if @type is "json"
-                contentType = "application/json"
+            if @method is "POST" or @method is "PUT"
+                if @type is "json"
+                    contentType = "application/json"
+                    data = JSON.stringify( data ) # Shouldn't xhr.call() take care of this?  Yes, it should :-(
 
             # Prepare the call URL
             #
@@ -105,14 +107,14 @@
             if userToken?
                 headers.Authorization = "bearer #{userToken}"
 
-            console.log( "[#{@name}] Calling service #{apiHost}#{url}", requestBody )
+            console.log( "[#{@name}] Calling service #{apiHost}#{url}", data )
 
             xhr = new XHR( settings )
             xhr.call(
                 url:            "#{apiHost}#{url}"
                 method:         @method
                 type:           @type
-                data:           JSON.stringify( requestBody )
+                data:           data
                 headers:        headers
                 contentType:    contentType
             )
