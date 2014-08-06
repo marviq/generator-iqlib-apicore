@@ -5,6 +5,7 @@
             require( "madlib-settings" )
             require( "madlib-hostmapping" )
             require( "q" )
+            require( "http-custom-errors" )
             require( "./api/login" )
             require( "./api/addCompany" )
             require( "./api/addAdminEmployee" )
@@ -15,11 +16,12 @@
             "madlib-settings"
             "madlib-hostmapping"
             "q"
+            "./http-custom-errors"
             "./api/login"
             "./api/addCompany"
             "./api/addAdminEmployee"
         ], factory )
-)( ( console, settings, HostMapping, Q, services... ) ->
+)( ( console, settings, HostMapping, Q, HTTPErrors, services... ) ->
 
     api =
         initialised:    false
@@ -73,17 +75,10 @@
         #
         else
             console.log( "[API] Unknown service called: #{serviceName}" )
-            deferred = Q.defer()
-            deferred.reject(
-                status:     404
-                statusText: "unknown service #{serviceName}"
-                request:    serviceName
-                response:   null
-            )
 
-            # Abort due to error
-            #
-            return deferred.promise
+            error = new HTTPErrors.NotFoundError( "unknown service #{serviceName}" )
+
+            return Q.reject( error )
 
     return api
 )

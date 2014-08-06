@@ -19,6 +19,7 @@
         "grunt-mocha-test": "~0.11.0"
     },
     "dependencies": {
+        "http-custom-errors": "^8.0.0",
         "madlib-console": "~0.1.4",
         "madlib-hostmapping": "~0.1.7",
         "madlib-object-utils": "^0.1.6",
@@ -38,8 +39,8 @@
     "main": "lib/<%= _.slugify(mainName) %>.js",
     "name": "<%= _.slugify(packageName) %>",
     "scripts": {
-      "test": "command -v grunt >/dev/null 2>&1 && grunt test || { echo >&2 'Grunt is not installed'; }",
-      "prepublish": "command -v grunt >/dev/null 2>&1 && grunt || { echo >&2 'Grunt is not installed'; }"
+        "test": "command -v grunt >/dev/null 2>&1 && grunt test || { echo >&2 'Grunt is not installed'; }",
+        "prepublish": "command -v grunt >/dev/null 2>&1 && grunt || { echo >&2 'Grunt is not installed'; }"
     },
     "version": "0.1.0"
 }
