@@ -1,13 +1,13 @@
 ( ( factory ) ->
     if typeof exports is "object"
         module.exports = factory(
-            require "q"
-            require "madlib-console"
-            require "madlib-hostmapping"
-            require "madlib-object-utils"
-            require "madlib-xhr"
-            require "underscore"
-            require "moment"
+            require( "q" )
+            require( "madlib-console" )
+            require( "madlib-hostmapping" )
+            require( "madlib-object-utils" )
+            require( "madlib-xhr" )
+            require( "underscore" )
+            require( "moment" )
         )
     else if typeof define is "function" and define.amd
         define( [
