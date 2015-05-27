@@ -1,6 +1,7 @@
 # generator-iqlib-apicore
 
 [![npm version](https://badge.fury.io/js/generator-iqlib-apicore.svg)](http://badge.fury.io/js/generator-iqlib-apicore)
+[![David dependency drift detection](https://david-dm.org/marviq/generator-iqlib-apicore.svg)](https://david-dm.org/marviq/generator-iqlib-apicore)
 
 A [Yeoman](http://yeoman.io) based generator for madlib based webapps.
 
