@@ -1,16 +1,15 @@
 {
-  "name": "generator-iqlib-apicore",
-  "version": "0.1.2",
-  "description": "Yeoman based generator for a iqlib based API client library",
-  "license": "MIT",
-  "homepage": "https://github.com/marviq/generator-iqlib-apicore",
-  "bugs": "https://github.com/marviq/generator-iqlib-apicore/issues",
   "author": {
     "name": "Raymond de Wit"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/marviq/generator-iqlib-apicore"
+  "bugs": "https://github.com/marviq/generator-iqlib-apicore/issues",
+  "dependencies": {
+    "chalk": "~0.4.0",
+    "yeoman-generator": "~0.16.0"
+  },
+  "description": "Yeoman based generator for a iqlib based API client library",
+  "devDependencies": {
+    "mocha": "*"
   },
   "scripts": {
     "test": "mocha"
@@ -19,14 +18,18 @@
     "AUTHORS",
     "app"
   ],
+  "homepage": "https://github.com/marviq/generator-iqlib-apicore",
   "keywords": [
     "yeoman-generator"
   ],
-  "dependencies": {
-    "yeoman-generator": "~0.16.0",
-    "chalk": "~0.4.0"
+  "license": "MIT",
+  "name": "generator-iqlib-apicore",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marviq/generator-iqlib-apicore"
   },
-  "devDependencies": {
-    "mocha": "*"
-  }
+  "scripts": {
+    "test": "mocha"
+  },
+  "version": "0.1.2"
 }
