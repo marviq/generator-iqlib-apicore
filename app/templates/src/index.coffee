@@ -15,17 +15,12 @@
             "q"
             "./api-settings"
         ], factory )
-)( (\
-    console
-,   settings
-,   HostMapping
-,   Q
-,   defaultSettings
-) ->
+)( ( console, settings, HostMapping, Q, defaultSettings, services... ) ->
 
     api =
         initialised:    false
         settings:       null
+        serviceMapping: {}
 
     api.init = ( userSettings ) ->
 
@@ -47,6 +42,15 @@
         #
         api.hostMapping = new HostMapping( api.settings )
 
+        # Create the service mapping
+        #
+        for service in services 
+            if service.name 
+                serviceMapping[ service.name ] = service
+            else 
+                console.warn( "[API] Service supplied without an name" )
+
+
         # Mark the API as initialised
         #
         api.initialised = true
@@ -60,32 +64,28 @@
 
         # Find the correct service to call
         #
-        service
-        switch serviceName
+        Service = serviceMapping[ serviceName ]
 
-            when "MyService"
-                service = new MyService()
-
-
-            # Unknown service call
-            #
-            else
-                console.log( "[API] Unknown service called: #{serviceName}" )
-                deferred = Q.defer()
-                deferred.reject(
-                    status:     404
-                    statusText: "unknown service #{serviceName}"
-                    request:    serviceName
-                    response:   null
-                )
-
-                # Abort due to error
-                #
-                return deferred.promise
-
-        # Call the service using current settings
+        # If the service was found call it
         #
-        return service.call( api.settings, params )
+        if service 
+            return new Service().call( api.settings, params )
+
+        # Unknown service call
+        #
+        else
+            console.log( "[API] Unknown service called: #{serviceName}" )
+            deferred = Q.defer()
+            deferred.reject(
+                status:     404
+                statusText: "unknown service #{serviceName}"
+                request:    serviceName
+                response:   null
+            )
+
+            # Abort due to error
+            #
+            return deferred.promise
 
     return api
 )
