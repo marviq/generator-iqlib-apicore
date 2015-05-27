@@ -1,8 +1,6 @@
 # generator-iqlib-apicore
 [![NPM version](https://badge.fury.io/js/generator-iqlib-apicore.png)](http://badge.fury.io/js/generator-iqlib-apicore)
 
-[![Npm Downloads](https://nodei.co/npm/generator-iqlib-apicore.png?downloads=true&stars=true)](https://nodei.co/npm/generator-iqlib-apicore.png?downloads=true&stars=true)
-
 A [Yeoman](http://yeoman.io) based generator for madlib based webapps.
 
 
