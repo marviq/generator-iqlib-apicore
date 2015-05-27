@@ -3,15 +3,14 @@
     'use strict';
     var path    = require( 'path' );
     var util    = require( 'util' );
-    var path    = require( 'path' );
     var yeoman  = require( 'yeoman-generator' );
 
     // Determine packageName based on current folder name
     //
     var fullPath    = process.cwd();
-    var packageName = fullPath.split( path.sep ).pop()
+    var packageName = fullPath.split( path.sep ).pop();
 
-    var IqLibApicoreGenerator = module.exports = function IqLibApicoreGenerator( args, options, config )
+    var IqLibApicoreGenerator = module.exports = function IqLibApicoreGenerator( args, options /*, config */ )
     {
         yeoman.generators.Base.apply( this, arguments );
 
@@ -24,7 +23,7 @@
         } );
 
         this.pkg         = JSON.parse( this.readFileAsString( path.join( __dirname, '../package.json' ) ) );
-        this.currentYear = new Date().getFullYear()
+        this.currentYear = new Date().getFullYear();
     };
 
     util.inherits( IqLibApicoreGenerator, yeoman.generators.Base );
