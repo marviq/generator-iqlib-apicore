@@ -1,6 +1,6 @@
 {
   "name": "generator-iqlib-apicore",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Yeoman based generator for a iqlib based API client library",
   "license": "MIT",
   "main": "app/index.js",
