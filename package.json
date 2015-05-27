@@ -3,7 +3,6 @@
   "version": "0.1.2",
   "description": "Yeoman based generator for a iqlib based API client library",
   "license": "MIT",
-  "main": "app/index.js",
   "homepage": "https://github.com/Qwerios/generator-madlib-apicore",
   "bugs": "https://github.com/Qwerios/generator-madlib-apicore/issues",
   "author": {
