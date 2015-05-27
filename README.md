@@ -1,5 +1,6 @@
 # generator-iqlib-apicore
-[![NPM version](https://badge.fury.io/js/generator-iqlib-apicore.png)](http://badge.fury.io/js/generator-iqlib-apicore)
+
+[![npm version](https://badge.fury.io/js/generator-iqlib-apicore.svg)](http://badge.fury.io/js/generator-iqlib-apicore)
 
 A [Yeoman](http://yeoman.io) based generator for madlib based webapps.
 
