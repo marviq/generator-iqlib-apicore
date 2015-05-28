@@ -3,8 +3,8 @@
   "version": "0.1.2",
   "description": "Yeoman based generator for a iqlib based API client library",
   "license": "MIT",
-  "homepage": "https://github.com/Qwerios/generator-madlib-apicore",
-  "bugs": "https://github.com/Qwerios/generator-madlib-apicore/issues",
+  "homepage": "https://github.com/marviq/generator-iqlib-apicore",
+  "bugs": "https://github.com/marviq/generator-iqlib-apicore/issues",
   "author": {
     "name": "Raymond de Wit",
     "email": "raymond@thewhite.nl",
