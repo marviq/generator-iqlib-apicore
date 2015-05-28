@@ -21,9 +21,6 @@
     "type": "git",
     "url": "https://github.com/marviq/generator-iqlib-apicore"
   },
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "scripts": {
     "test": "mocha"
   },
